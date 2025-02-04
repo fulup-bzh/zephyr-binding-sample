@@ -42,4 +42,4 @@ manifest:
         - afb-binder
 
   self:
-    path: zephyr-binding-test
+    path: binding-sample
