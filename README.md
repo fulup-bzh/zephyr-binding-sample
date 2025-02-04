@@ -111,7 +111,7 @@ afb-binder --verbose --alias=/devtools:/usr/share/afb-ui-devtools/binder --monit
 
 ### Connect to your Zephyr API through Linux
 
-Using your prefered browser: http://localhost:1234:/devtools
+If your container/firewall allows. Use your prefered browser: http://localhost:1234:/devtools
 
 Using afb-client from a terminal
 ```
