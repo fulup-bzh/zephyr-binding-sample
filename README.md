@@ -17,7 +17,7 @@ Same as Jose initial zephyr-binding-test, but organized to be compiled as an ext
 ```
   sudo dnf group install "Development Tools" "C Development Tools and Libraries"
   sudo dnf install cmake ninja-build gperf dfu-util dtc wget which python3.12-pip python3-tkinter xz file python3.12 python3.12-devel SDL2-devel
-  sudo dnf install usbutils tio # not part of minimal podman/docker images
+  sudo dnf install usbutils tio cmake # not part of minimal podman/docker images
 ```
 
 ### Force Pythib 3.12 as default
@@ -40,12 +40,27 @@ sudo update-alternatives --config python3
 ### Install Zephyr/SDK
   Ref: https://docs.zephyrproject.org/latest/develop/toolchains/zephyr_sdk.html
   https://github.com/zephyrproject-rtos/sdk-ng/releases
+
 ```
+  # extract into /opt
+  sudo chown $USERNAME /opt
   cd /opt
-  wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.17.0/zephyr-sdk-0.17.0_linux-x86_64.tar.xz
-  tar xvf zephyr-sdk-0.17.0_linux-x86_64.tar.xz
-  rm zephyr-sdk-0.17.0_linux-x86_64.tar.xz
+
+  wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.17.0/zephyr-sdk-0.17.0_linux-x86_64_minimal.tar.xz -P $HOME/Downloads
+
+  tar xvf $HOME/Downloads/zephyr-sdk-0.17.0_linux-x86_64.tar.xz
+  cd zephyr-sdk-0.17.0
+  ./setup.sh -c -h -t arm-zephyr-eabi
+
 ```
+
+### Update your default Zephyr environement
+```
+cat /etc/profile.d/zephyr.sh
+source /opt/zephyr-venv/bin/activate
+source  /opt/zephyr-sdk-0.17.0/environment-setup-x86_64-pokysdk-linux
+```
+
 
 ## Building and Running
 
