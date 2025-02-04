@@ -7,5 +7,6 @@ project(binding_test)
 
 target_sources(app PRIVATE src/main.c src/dhcp.c)
 
-include_directories(${ZEPHYR_RP_LIB_UTILS_MODULE_DIR}/src)
-include_directories(${ZEPHYR_AFB_LIBAFB_MODULE_DIR}/src/libafb)
+# Fulup note: module specific include declaration should be within rp-lib & libafb repo not within application
+include_directories(${CMAKE_SOURCE_DIR}/../modules/lib/rp-lib-utils/src)
+include_directories(${CMAKE_SOURCE_DIR}/../modules/lib/afb-libafb/src/libafb)
