@@ -1,0 +1,31 @@
+export PATH=$PATH:/usr/local/LinkServer
+
+west build -p always -b frdm_k64f
+west build
+west flash
+west debug
+
+picocom -b 115200 /dev/ttyACM0
+
+bash
+. .venv/bin/activate
+
+cd user_app/zephyr-binding-test
+west build -p always -b qemu_cortex_m3
+west build
+
+
+vi zephyr/submanifests/afb-binder.yaml
+west update
+
+gvim zephyr/cmake/modules/extensions.cmake
+
+export PATH=$PATH:/home/jobol/zephyr-sdk-0.16.8/sysroots/x86_64-pokysdk-linux/usr/bin
+
+west build -b b_u585i_iot02a/stm32u585xx/ns --shield link_board_eth  -p always
+west build -b b_u585i_iot02a --shield link_board_eth  -p always
+st-flash --format ihex write /home/jobol/zephyrproject/user_app/zephyr-binding-test/build/zephyr/zephyr.hex
+
+west flash -r openocd
+west debug
+
