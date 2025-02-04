@@ -1,0 +1,45 @@
+manifest:
+
+  remotes:
+    - name: redpesk-core
+      url-base: https://github.com/redpesk-core
+    - name: iotbzh-internal
+      url-base: http://git.ovh.iot/redpesk/redpesk-core/
+
+  projects:
+    - name: zephyr
+      url: https://github.com/zephyrproject-rtos/zephyr
+      revision: main
+      path: zephyr
+      west-commands: scripts/west-commands.yml
+      import:
+        name-allowlist:
+          - cmsis
+          - hal_nxp
+
+   - name: afb-binding
+      remote: iotbzh-internal
+      repo-path: afb-binding
+      path: modules/lib/afb-binding
+      revision: "@jobol/zef"
+      groups:
+        - afb-binder
+
+    - name: afb-libafb
+      remote: iotbzh-internal
+      repo-path: afb-libafb
+      path: modules/lib/afb-libafb
+      revision: "@jobol/zef"
+      groups:
+        - afb-binder
+
+    - name: rp-lib-utils
+      remote: iotbzh-internal
+      repo-path: rp-lib-utils
+      path: modules/lib/rp-lib-utils
+      revision: "@jobol/zef"
+      groups:
+        - afb-binder
+
+  self:
+    path: zephyr-binding-test

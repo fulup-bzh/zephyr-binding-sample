@@ -1,0 +1,22 @@
+# AFB Binder configuration
+# SPDX-License-Identifier: Apache-2.0
+
+# This loads Zephyr base shield defconfigs
+source "../zephyr/Kconfig"
+
+config ZEPHYR_AFB_BINDING_MODULE
+	bool
+
+config ZEPHYR_AFB_LIBAFB_MODULE
+	bool
+
+config ZEPHYR_RP_LIB_UTILS_MODULE
+	bool
+
+config AFB_BINDER
+	bool "AFB Binder Support"
+	default n
+	select CONFIG_POSIX_API
+	select CONFIG_PTHREAD_IPC
+	help
+	  This option enables the AFB Binder library
