@@ -17,7 +17,7 @@ manifest:
           - cmsis
           - hal_nxp
 
-   - name: afb-binding
+    - name: afb-binding
       remote: iotbzh-internal
       repo-path: afb-binding
       path: modules/lib/afb-binding
