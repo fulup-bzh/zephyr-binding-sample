@@ -16,7 +16,7 @@ Same as Jose initial zephyr-binding-test, but organized to be compiled as an ext
 ### Install dependencies
 ```
   sudo dnf group install "Development Tools" "C Development Tools and Libraries"
-  sudo dnf install cmake ninja-build gperf dfu-util dtc wget which python3.12-pip python3-tkinter xz file python3.12 python3.12-devel SDL2-devel
+  sudo dnf install cmake sudo dnf gperf dfu-util dtc wget which python3.12-pip python3-tkinter xz file python3.12 python3.12-devel SDL2-devel
   sudo dnf install usbutils tio cmake # not part of minimal podman/docker images
 ```
 
@@ -51,7 +51,7 @@ sudo update-alternatives --config python3
   tar xvf $HOME/Downloads/zephyr-sdk-0.17.0_linux-x86_64.tar.xz
   cd zephyr-sdk-0.17.0
   ./setup.sh -c -h -t arm-zephyr-eabi
-
+  source /opt/zephyr-sdk-0.17.0/environment-setup-x86_64-pokysdk-linux
 ```
 
 ### Update your default Zephyr environement
@@ -76,7 +76,7 @@ pip3 install -r zephyr/scripts/requirements-base.txt
 
 Add your target board (npx used as sample)
 ```
-# add you target board into west.yml
+# add you target board into west.yml (ex: hal-st)
 vi binding-sample/west.yml
   import:
     name-allowlist:
@@ -86,6 +86,9 @@ vi binding-sample/west.yml
 # update your workspace
 west update --narrow
 ```
+
+**WARNING**: workspace imposes you to be in a clean/empty repository. If you fail with 'already initialized'.
+You should check and remove any `.west` directory within workspace direcory as well as within any directory from workspace path.
 
 You should end-up with something like
 ```
