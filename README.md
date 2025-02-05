@@ -66,7 +66,7 @@ source  /opt/zephyr-sdk-0.17.0/environment-setup-x86_64-pokysdk-linux
 
 ## Building and Running
 
-Create west project workspace
+Create west project workspace. **WARNING**: workspace imposes you to be in a clean/empty repository. If you fail with 'already initialized'. You should check and remove any `.west` directory within workspace direcory as well as within any directory from workspace path.
 ```
 unset ZEPHYR_BASE ;# incompatible with zephyr T2 workspace model
 mkdir binding-workspace
@@ -88,9 +88,6 @@ vi binding-sample/west.yml
 # update your workspace
 west update --narrow
 ```
-
-**WARNING**: workspace imposes you to be in a clean/empty repository. If you fail with 'already initialized'.
-You should check and remove any `.west` directory within workspace direcory as well as within any directory from workspace path.
 
 You should end-up with something like
 ```
