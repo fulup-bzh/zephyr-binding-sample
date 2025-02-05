@@ -124,7 +124,7 @@ tio /dev/ttyACM0
 ### Import Zephyr API as a Linux shadow API
 ```
 TARGET_IP=192.168.1.57
-afb-binder --verbose --alias=/devtools:/usr/share/afb-ui-devtools/binder --monitoring -p 1234 --rpc-client tcp:$TARGET_IP:1234/tuto0 tcp:$TARGET_IP:1234/tuto1
+afb-binder --verbose --alias=/devtools:/usr/share/afb-ui-devtools/binder --monitoring -p 1234 --rpc-client tcp:$TARGET_IP:1234/tuto0 tcp:$TARGET_IP:1235/tuto1
 ```
 
 ### Connect to your Zephyr API through Linux
@@ -137,12 +137,11 @@ Using afb-client from a terminal
 ON-REPLY 1:tuto1/hello: OK
 {"jtype":"afb-reply","request":{"status":"success","code":0},"response":"Hello duc!"}
 
-> afb-client localhost:1234/api tuto1 hello duc
+> afb-client localhost:1235/api tuto1 hello duc
 ON-REPLY 1:tuto1/hello: OK
 {"jtype":"afb-reply","request":{"status":"success","code":0},"response":"Hello duc!"}
 ```
 
 ToBeDone
 
-* dans les modules libafb/zephyr les paths des includes devraient être automatique et non pas dans l'application
 * exposer les 2 api en mode debug et mettre 2 verbes différents
