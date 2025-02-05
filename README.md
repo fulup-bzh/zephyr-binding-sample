@@ -7,6 +7,8 @@ Same as Jose initial zephyr-binding-test, but organized to be compiled as an ext
 
 ## Install Zephyr into a podman toolbx
 
+If you already have a Zephyr SDK+West+Python>=3.10 environment just directly at chapter 'Building and Running'
+
 ### create zephyr dev container using toolbx/podman
 ```
    toolbox create --image quay.io/toolbx-images/almalinux-toolbox:9 zephyr
